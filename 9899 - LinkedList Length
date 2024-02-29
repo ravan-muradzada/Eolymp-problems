@@ -1,0 +1,8 @@
+int length(ListNode* head){
+    int len = 0;
+    while (head != nullptr){
+        len++;
+        head = head->next;
+    }
+    return len;
+}

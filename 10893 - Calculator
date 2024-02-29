@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+
+int main(){
+    int n;
+    cin >> n;
+    int process = 0;
+    
+    while (n > 0){
+        while (n % 3 == 0){
+            n /= 3;
+            process++;
+        }
+        while(n % 3 != 0){
+            n--;
+            process++;
+        }
+    }
+    process--;
+    cout << process;
+    
+    
+   
+    return 0;
+}

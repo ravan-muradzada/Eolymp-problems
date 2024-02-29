@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+void f(size_t n){
+    size_t a = 1,b = 1;
+    vector <int> v;
+    for (int i = 0; i < n + 1; ++i){
+        v.push_back(a);
+        v.push_back(b);
+        if (v.size() > n) break;
+        a = a + b;
+        b = a + b;
+    }
+    cout << v[n];
+}
+
+
+int main(){
+    size_t n;
+    cin >> n;
+    f(n);
+    
+    
+    return 0;
+}

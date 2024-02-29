@@ -9,14 +9,11 @@ bool f(int num){
     return true;
 }
 
-
-
 int main(){
     int num;
     cin >> num;
     if (f(num))
         cout << "Yes";
     else cout << "No";
-    
     return 0;
 }

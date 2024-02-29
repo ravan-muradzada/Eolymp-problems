@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+typedef struct {
+    int index;
+    int score;
+}Participant;
+
+void merge(Participant arr[], int low, int middle, int high){
+    int left = low, right = middle + 1, k = 0;
+    Participant temp[high - low + 1];
+    while (left <= middle && right <= high){
+        if (arr[left].score < arr[right].score){
+            temp[k].index = arr[right].index;
+            temp[k++].score = arr[right++].score;
+        }else{
+            temp[k].index = arr[left].index;
+            temp[k++].score = arr[left++].score;
+        }
+    }
+    while(left <= middle){
+        temp[k].index = arr[left].index;
+        temp[k++].score = arr[left++].score;
+    }
+    while (right <= high){
+        temp[k].index = arr[right].index;
+        temp[k++].score = arr[right++].score;
+    }
+    for (int i = low; i <= high; ++i){
+        arr[i].index = temp[i - low].index;
+        arr[i].score = temp[i - low].score;
+    }
+}
+
+
+void mergeSort(Participant arr[], int low, int high){
+    if (low >= high) return;
+    int middle = (low + high) / 2;
+    mergeSort(arr, low, middle);
+    mergeSort(arr, middle + 1, high);
+    merge(arr, low, middle, high);
+}
+
+
+
+int main(){
+    int n;
+    scanf("%d", &n);
+    Participant arr[n];
+    for (int i = 0; i < n; ++i){
+        arr[i].index = i + 1;
+        scanf("%d", &arr[i].score);
+    }
+    mergeSort(arr, 0, n - 1);
+    for (int i = 0; i < n; ++i) printf("%d ", arr[i].index);
+    return 0;
+}

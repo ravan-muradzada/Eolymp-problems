@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <math.h>
+#define limit 0.000001
+double func(double x){
+    return (x * x + sqrt(x));
+}
+
+int main(){
+    double C;
+    scanf("%lf",&C);
+    double left = 0, right = sqrt(C);
+    while (right - left > limit){
+        double mid = left + (right - left) / 2;
+        double f_mid = func(mid);
+        if (f_mid > C)
+            right = mid;
+        else left = mid;
+    }
+    printf("%.6lf",left);
+    return 0;
+}

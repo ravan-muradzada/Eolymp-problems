@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+const int MAX = 55;
+long long dp[MAX][MAX];
+
+long long f(int x, int y) {
+    if(x <= 0 || y <= 0) return 0;
+    if(dp[x][y] != -1) return dp[x][y];
+    if(x <= y) return dp[x][y] = f(x-1, y-2) + f(x-2, y-1) + 2;
+    if(x > y) return dp[x][y] = f(x-2, y-2) + 1;
+    return 0;
+}
+
+int main() {
+    memset(dp, -1, sizeof(dp));
+    int x, y;
+    cin >> x >> y;
+    cout << f(x, y) << endl;
+    return 0;
+}

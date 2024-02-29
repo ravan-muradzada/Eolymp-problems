@@ -1,0 +1,23 @@
+#include <iostream>
+#define MOD 1000000007
+typedef long long lli;
+using namespace std;
+
+lli power(lli num, lli p){
+    if (p == 0) return 1;
+    if (p % 2 == 0){
+        return power((num * num) % MOD, p / 2);
+    }else{
+        return num* power(num, p-1) % MOD;
+    }
+    
+}
+int main() {
+    lli n;
+    cin >> n;
+    lli res = n * power(n - 1,n - 1) % MOD;
+    cout << res << endl;   
+    
+    
+    return 0;
+}

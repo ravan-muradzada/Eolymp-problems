@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Stack{
+private:
+    stack<int> mainS;
+    stack<int> minS;
+public:
+    void push(int newV){
+        mainS.push(newV);
+        if (minS.empty() || newV < minS.top())
+            minS.push(newV);
+    }
+    void pop(){
+        if (!mainS.empty()){
+            if (mainS.top() == minS.top())
+                minS.pop();
+            mainS.pop();
+        }
+    }
+    int getMin(){
+        if (!minS.empty()) return minS.top();
+        return -1;
+    }
+};
+
+
+int main(){
+    Stack st;
+    int n;
+    cin >> n;
+    int op,num;
+    for (int i = 0; i < n; ++i){
+        cin >> op;
+        switch(op){
+            case 1:
+                cin >> num;
+                st.push(num);
+                break;
+            case 2:
+                st.pop();
+                break;
+            case 3:
+                if (st.getMin() != -1){
+                    cout << st.getMin() << endl;
+                }
+        }
+    }
+    
+    
+    
+    return 0;
+}

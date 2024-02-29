@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+    stack<char> st;
+    string brackets;
+    cin >> brackets;
+    bool flag = false;
+    for (char i: brackets){
+        if (i == '('){
+            st.push(i);
+        }else{
+            if (!st.empty() && st.top() == '('){
+                st.pop();
+                flag = true;
+            }else{
+                flag = false;
+                break;
+            }
+        }
+    }
+    if (flag && st.empty()) cout << "YES";
+    else cout << "NO";
+    
+    return 0;
+}

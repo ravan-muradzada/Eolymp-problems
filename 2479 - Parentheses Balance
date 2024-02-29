@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool f(string pr){
+    stack<char> st;
+    if (pr == "") return true;
+    if (pr.length() > 128) return false;
+    for (char i: pr){
+        if (i == '(' || i == '['){
+            st.push(i);
+        }else if (i == ')' || i == ']'){
+            if (st.empty()) return false;
+            char topp = st.top();
+            st.pop();
+            if ((i == ')' && topp != '(') || (i == ']' && topp != '[')) {
+                return false;
+            }
+        }else {
+            return false;
+        }
+    }
+    return st.empty();
+}
+int main(){
+    string pr;
+    int n;
+    cin >> n;
+    cin.clear();
+    cin.ignore();
+    for (int i = 0; i < n; ++i){
+        getline(cin, pr);
+        if (f(pr)) cout << "Yes\n";
+        else cout << "No\n";
+    }
+    return 0;
+}

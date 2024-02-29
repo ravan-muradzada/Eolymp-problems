@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+    stack <int> st;
+    int n, num;
+    cin >> n;
+    vector<int> nums;
+    for (int i = 0; i < n; ++i){
+        cin >> num;
+        nums.push_back(num);
+        if (st.empty() || st.top() == num){
+            st.push(num);
+        }else st.pop();
+    }
+    if (st.empty()){
+        cout << -1;
+        return 0;
+    }
+    int k = st.top(),count = 0;
+    for (int i: nums) if (k == i) count++;
+    if (count > nums.size()/2){
+        cout << k;
+    }else cout << -1;
+
+
+    return 0;
+}

@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+double a, b, c, d, l, r, x;
+
+double f(double x)
+{
+	return a*x*x*x + b*x*x + c*x + d;
+}
+
+int main() {
+	scanf("%lf %lf %lf %lf", &a, &b, &c, &d);
+	r = 1;
+	while (f(r) * f(-r) >= 0) r *= 2;
+	l = -r;
+	while (r - l > 1e-12)
+	{
+		x = (l + r) / 2;
+		if (f(x) * f(r) > 0) r = x;
+		else l = x;
+	}
+	printf("%.9lf\n", l);
+	return 0;
+}

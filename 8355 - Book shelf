@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    deque<int>dq;
+    int n, op, num;
+    cin >> n;
+    vector<int> removing;
+    for (int i = 0; i < n; ++i){
+        cin >> op;
+        switch(op){
+            case 1:
+                cin >> num;
+                dq.push_front(num);
+                break;
+            case 2:
+                cin >> num;
+                dq.push_back(num);
+                break;
+            case 3:
+                if (!dq.empty()){
+                    removing.push_back(dq.front());
+                    dq.pop_front();
+                }
+                break;
+            case 4:
+                if(!dq.empty()){
+                    removing.push_back(dq.back());
+                    dq.pop_back();
+                }
+                break;
+        }
+    }
+    for (int i: removing) cout << i << endl;
+    
+    
+    return 0;
+}

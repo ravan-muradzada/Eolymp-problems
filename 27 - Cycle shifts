@@ -1,0 +1,31 @@
+#include <stdio.h>
+int maxLeftCyclicShift(int n) {
+    int maxShift = 0;
+    int num = n;
+    int bitCount = 0;
+    
+    while (num > 0) {
+        num >>= 1;
+        bitCount++;
+    }
+
+    for (int i = 0; i < bitCount; i++) {
+        int msb = (n >> (bitCount - 1)) & 1;
+        n = ((n << 1) | msb) & ((1 << bitCount) - 1);
+
+        if (n > maxShift) {
+            maxShift = n;
+        }
+    }
+
+    return maxShift;
+}
+
+int main() {
+    int n = 11;
+    scanf("%d",&n);
+    int max = maxLeftCyclicShift(n);
+    printf("%d", max);
+
+    return 0;
+}

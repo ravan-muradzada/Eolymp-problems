@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int n,k;
+    cin >> n;
+    vector <int> nums;
+    for (int i = 0; i < n; ++i){
+        cin>> k;
+        nums.push_back(k);
+    }
+   int Max[2] = {nums[0],0}; //num, index
+
+    for (int i = 1; i < nums.size(); ++i){
+        if (nums[i] >= Max[0]){
+            Max[0] = nums[i];
+            Max[1] = i;
+        }
+    }
+    swap(nums[nums.size() - 1], nums[Max[1]]);
+    for (int i: nums) cout << i << " ";
+
+}

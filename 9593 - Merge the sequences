@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+void merge(int arr1[], int arr2[], int res[], int n, int m){
+    int firstPtr = 0, secondPtr = 0, newPtr = 0;
+    while (firstPtr < n && secondPtr < m){
+        if (arr1[firstPtr] > arr2[secondPtr])
+            res[newPtr] = arr2[secondPtr++];
+        else res[newPtr] = arr1[firstPtr++];
+        newPtr++;
+    }
+    while (firstPtr < n){
+        res[newPtr++] = arr1[firstPtr++];
+    }
+    while (secondPtr < m){
+        res[newPtr++] = arr2[secondPtr++];
+    }
+}
+
+int main(){
+    int n, m;
+    scanf("%d", &n);
+    int arr[n];
+    for (int i = 0; i < n; ++i) scanf("%d", &arr[i]);
+    scanf("%d",&m);
+    int arr1[m];
+    for (int i = 0; i < m; ++i) scanf("%d", &arr1[i]);
+    
+    int result[n + m];
+    merge(arr,arr1,result,n,m);
+    for (int i = 0; i < (n + m); ++i) printf("%d  ", result[i]);
+    
+    
+    
+    return 0;
+}

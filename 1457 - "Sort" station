@@ -1,0 +1,26 @@
+#include <stdio.h>
+int main(){
+    int n, M;
+    scanf("%d %d", &n, &M);
+    int arr[n], maxs[n];
+    for (int i = 0; i < n; ++i){
+        scanf("%d",&arr[i]);
+        if (i == 0)
+            maxs[i] = arr[i];
+        else{
+            if (maxs[i - 1] > arr[i])
+                maxs[i] = maxs[i - 1];
+            else maxs[i] = arr[i];
+        }
+    }
+    
+    for (int i = 1; i < n; ++i){
+        if (maxs[i] != arr[i] && (maxs[i] + arr[i] > M))
+        {
+            printf("No");
+            return 0;
+        }
+    }
+    printf("Yes");
+    return 0;
+}

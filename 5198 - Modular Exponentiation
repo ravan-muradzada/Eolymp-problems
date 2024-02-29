@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int llg;
+llg power(llg a, llg n,llg m){
+    if (n == 0) return 1;
+    else if (n % 2 == 0){
+        a = (a * a) % m;
+        return power(a, n/2,m);
+    }
+    else{ 
+        return (a * power(a, n - 1,m)) % m;
+    }
+}
+int main(){
+    llg a, n, m;
+    cin >> a >> n >> m;
+    cout << power(a,n,m);
+    
+    
+    return 0;
+}

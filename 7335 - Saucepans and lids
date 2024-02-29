@@ -1,0 +1,30 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int f(int s[], int l[], int n, int m){
+    int count = 0;
+    int firstPtr = 0, secondPtr = 0;
+    while (firstPtr < n && secondPtr < m){
+        if (l[secondPtr] >= s[firstPtr]){
+            firstPtr++;
+            secondPtr++;
+            count++;
+        }
+        else secondPtr++;
+    }
+    return count;
+}
+
+int main(){
+    int n, m;
+    cin >> n >> m;
+    int s[n], l[m];
+    for (int i = 0; i < n; ++i) cin >> s[i];
+    for (int i = 0; i < m; ++i) cin >> l[i];
+    sort(s, s + n);
+    sort(l, l + m);
+    cout << f(s, l, n, m);
+
+    return 0;
+}

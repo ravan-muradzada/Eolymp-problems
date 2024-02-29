@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+int arr[6] = {500, 200, 100, 50, 20, 10};
+
+int f(int num){
+    if (num % 10 != 0) return -1;
+    int count = 0, i = 0;
+    while (num > 0){
+        count += (num / arr[i]);
+        num %= arr[i++];
+    }
+    return count;
+}
+
+
+int main(){
+    int num;
+    cin >> num;
+    cout << f(num);
+   
+    return 0;
+}

@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class A{
+private:
+    vector<stack<int>> vt;
+    unordered_map<int, int> mp;
+public:
+    void push(int value){
+        mp[value]++;
+        if (vt.empty() || vt.size() < mp[value]){
+            stack<int> temp;
+            temp.push(value);
+            vt.push_back(temp);
+        }else{
+            vt[mp[value] - 1].push(value);
+        }
+    }
+    int pop(){
+        if (vt.empty()) return 0;
+        int mostFrequentElement = vt.back().top();
+        mp[mostFrequentElement]--;
+        vt.back().pop();
+        if (vt.back().empty()) vt.pop_back();
+        return mostFrequentElement;
+    }
+};
+
+int main(){
+    A a1;
+    string option;
+    int num;
+    while (cin >> option){
+        if (option == "push"){
+            cin >> num;
+            a1.push(num);
+        }else if (option == "pop"){
+            cout << a1.pop() << endl;
+        }
+    }
+    return 0;
+}

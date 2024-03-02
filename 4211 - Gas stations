@@ -1,33 +1,20 @@
 #include <iostream>
 #include <algorithm>
-
 using namespace std;
 
-int main() {
+int main(){
     int l, n;
-
     cin >> l >> n;
-
-    int g[n + 1];
-    for (int i = 0; i < n; ++i) {
-        cin >> g[i];
+    int dis;
+    int arr[n];
+    for (int i = 0; i < n; ++i) cin >> arr[i];
+    sort(arr, arr + n);
+    int max = l - (arr[n - 1] - arr[0]);
+    for (int i = 0; i < n - 1; ++i){
+        dis = arr[i] - arr[i - 1];
+        if (dis > max) max = dis;
     }
-
-    sort(g, g + n);
-    g[n] = g[0];
-    double max = 0;
-    int t;
-    for (int i = 0; i < n; ++i) {
-        t = g[i + 1] - g[i];
-        if (t > max) {
-            max = t;
-        }
-    }
-    t = l - (g[n - 1] - g[0]);
-    if (t > max){
-        max = t;
-    }
-    printf("%.1lf", (max / 2));
-
+    float res = (float) max / 2;
+    printf("%.1f", res);
     return 0;
 }

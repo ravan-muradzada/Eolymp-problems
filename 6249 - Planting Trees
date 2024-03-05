@@ -1,25 +1,20 @@
 #include <iostream>
 #include <algorithm>
-typedef long long int lli;
 using namespace std;
-void reverse(lli arr[], lli size){
-    for (int i = 0; i < size / 2; ++i)
-        swap(arr[i], arr[size - 1 - i]);
+bool compare(int a, int b) {
+    return a > b; 
 }
 int main(){
-    lli n;
+    int n;
     cin >> n;
-    lli arr[n];
-    lli max = 0;
-    for (lli i = 0; i < n; ++i){
-        cin >> arr[i];
-    }
-    sort(arr, arr + n);
-    reverse(arr, n);
+    int* arr = new int[n];
+    for (int i = 0; i < n; ++i) cin >> arr[i];
+    sort(arr, arr + n, compare);
+    int sum = 0, max = 0;
     for (int i = 0; i < n; ++i){
         arr[i] += (i + 1);
         if (max < arr[i]) max = arr[i];
     }
-    cout << max + 1;
+    cout << ++max;
     return 0;
 }

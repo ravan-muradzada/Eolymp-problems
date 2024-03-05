@@ -1,20 +1,16 @@
 #include <iostream>
-using namespace std;
 typedef long long int lli;
-lli max(lli a, lli b){
-    return (a > b)? a: b;
-}
-
+using namespace std;
 int main(){
-    lli n, a, b, result = 0;
+    lli n, a, b, res = 0;
     cin >> n >> a >> b;
-    if (n % 2 == 0)
-        result = (a * n / 2) + (b * n / 2);
-    else{
-        lli maximum = max(a,b), second = (a + b) - maximum;
-        result = maximum * ((n / 2) + 1) + second * (n / 2);
-        
+    if (n % 2 == 1){
+        int max = (a > b)? a: b;
+        int min = (a + b) - max;
+        res = ((n / 2) + 1) * max + (n / 2) * min;
+    }else{
+        res = (n / 2) * a + (n / 2) * b;
     }
-    cout << result;
+    cout << res;
     return 0;
 }

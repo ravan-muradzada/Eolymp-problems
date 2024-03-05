@@ -1,12 +1,11 @@
 #include <iostream>
 #include <algorithm>
-typedef long long int lli;
 using namespace std;
-
+typedef long long int lli;
 int main(){
     lli n, k;
     cin >> n >> k;
-    lli arr[n];
+    lli* arr = new lli[n];
     for (lli i = 0; i < n; ++i){
         cin >> arr[i];
         if (arr[i] > k){
@@ -15,16 +14,17 @@ int main(){
         }
     }
     sort(arr, arr + n);
-    lli left = 0, right = n - 1, count = 0;
+    lli left = 0, right = n - 1, go = 0;
     while (left <= right){
-        count++;
-        if (arr[left] + arr[right] <= k)
+        if (arr[right] + arr[left] <= k){
             left++;
+        }
         right--;
+        go++;
     }
-    
-    cout << count;
-    
-    
+    cout << go;
+ 
+    delete[] arr;
+    arr = nullptr;
     return 0;
 }

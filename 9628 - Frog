@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+#include <algorithm>
+using namespace std;
+int func(vector<int>& dp1){
+    int s = dp1.size(), i;
+    vector<int> dp(s);
+    dp[1] = abs(dp1[1] - dp1[0]);
+    dp[0] = 0;
+    for (i = 2; i < s; ++i){
+        dp[i] = min(dp[i - 1] + abs(dp1[i - 1] - dp1[i]), dp[i - 2] + abs(dp1[i - 2] - dp1[i]));
+    }
+    return dp[i - 1];
+}
+int main(){
+    int n;
+    cin >> n;
+    vector<int> dp(n);
+    for (int i = 0; i < n; ++i) cin >> dp[i];
+    cout << func(dp);
+    return 0;
+}

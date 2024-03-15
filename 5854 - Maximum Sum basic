@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+#include <algorithm>
+using namespace std;
+int max(int a, int b, int c){
+    a = max(a, b);
+    return max(a, c);
+}
+int main(){
+    int n, m, Max = INT32_MIN;
+    cin >> n >> m;
+    int dp[n][m];
+    for (int i = 0; i < n; ++i){
+        for (int j = 0; j < m; ++j) cin >> dp[i][j];
+    }
+    for (int i = 1; i < n; ++i){
+        for (int j = 0; j < m; ++j){
+            if (j == 0){
+                dp[i][j] = max(dp[i - 1][j], dp[i - 1][j + 1]) + dp[i][j];
+            }else if (j == m - 1){
+                dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - 1]) + dp[i][j];
+            }else{
+                dp[i][j] = max(dp[i - 1][j - 1], dp[i - 1][j], dp[i - 1][j + 1]) + dp[i][j];
+            }
+        }
+    }
+    for (int i = 0; i < m; ++i){
+        Max = max(dp[n - 1][i], Max);
+    }
+    cout << Max;
+    return 0;
+}

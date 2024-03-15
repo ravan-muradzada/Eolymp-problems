@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+#include <algorithm>
+#define mod 9929
+typedef long long int lli;
+using namespace std;
+
+
+int main(){
+    lli n;
+    cin >> n;
+    lli Hodja[n][n];
+    lli donkey[n][n], sum = 0;
+    for (lli i = 0; i < n; ++i){
+        Hodja[0][i] = 1;
+        Hodja[i][0] = 1;
+        donkey[n - 1][i] = 1;
+        donkey[i][n - 1] = 1;
+    }
+    for (lli i = 1; i < n; ++i){
+        for (lli j = 1; j < n; ++j){
+            Hodja[i][j] = (Hodja[i - 1][j] + Hodja[i][j - 1]) % mod;
+            donkey[n - i - 1][n - 1 - j] = (donkey[n - i][n - 1 - j] + donkey[n - i - 1][n - j]) % mod;
+        }
+    }
+    for (lli i = 0; i < n; ++i){
+        for (lli j = 0; j < n; ++j){
+            sum += (Hodja[i][j] * donkey[i][j]) % mod;
+        }
+    }
+    cout << sum % mod;
+    
+    return 0;
+}

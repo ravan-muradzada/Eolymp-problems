@@ -3,5 +3,6 @@ TreeNode* Minimum(TreeNode *tree){
     while (temp->left != nullptr){
         temp = temp->left;
     }
+
     return temp;
 }

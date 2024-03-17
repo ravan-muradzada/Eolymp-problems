@@ -1,0 +1,16 @@
+TreeNode* Next(TreeNode* node) {
+    if (!node)
+        return nullptr;
+    if (node->right) {
+        TreeNode* curr = node->right;
+        while (curr->left)
+            curr = curr->left;
+        return curr;
+    }
+
+    TreeNode* curr = node;
+    while (curr->parent && curr->parent->right == curr)
+        curr = curr->parent;
+
+    return curr->parent;
+}

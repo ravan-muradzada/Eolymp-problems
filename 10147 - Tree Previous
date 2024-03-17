@@ -1,0 +1,15 @@
+TreeNode* Prev(TreeNode *tree){
+    if (!tree) return tree;
+    TreeNode* curr = tree;
+    if (curr->left != nullptr){
+        curr = curr->left;
+        while (curr->right){
+            curr = curr->right;
+        }
+        return curr;
+    }else{
+        while (curr->parent && curr->parent->right != curr)
+            curr = curr->parent;
+        return curr->parent;
+    }
+}

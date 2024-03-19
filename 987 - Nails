@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+#include <algorithm>
+using namespace std;
+
+int main(){
+    int n;
+    cin >> n;
+    vector<int> nails(n), dp(n);
+    for (int i = 0; i < n; ++i) cin >> nails[i];
+    sort(nails.begin(), nails.end());
+    dp[1] = nails[1] - nails[0];
+    dp[2] = nails[2] - nails[0];
+    
+    for (int i = 3; i < n; ++i){
+        dp[i] = min(dp[i - 1], dp[i - 2]) + nails[i] - nails[i - 1];
+    }
+    cout << dp.back();
+    
+    return 0;
+}

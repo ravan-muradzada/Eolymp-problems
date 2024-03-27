@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main(){
+    int n;
+    scanf("%d", &n);
+    int a = 2, b = 4;
+    
+    for (int i = 0; i < n - 1; ++i){
+        int temp = b;
+        b = a + b;
+        a = temp;
+    }
+    printf("%d", a);
+    
+    return 0;
+}

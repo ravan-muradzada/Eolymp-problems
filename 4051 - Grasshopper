@@ -1,0 +1,25 @@
+#include<stdio.h>
+int min(int a, int b){
+    return (a < b)? a: b;
+}
+int main() {
+    int n, k;
+    scanf("%d %d", &n, &k);
+    int dp[n + 1];
+    for (int i = 0; i <= n; ++i) dp[i] = 0;
+    dp[0] = 1;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= min(i, k); j++) {
+            dp[i] += dp[i - j];
+        }
+        // 1) From start of the rod up to the current (i'th) point, we try to calculate
+        // possibilies, because i may be less than k itself, we write min(i, k).
+        // 2) dp[i] += dp[i - j] -> that means the number of ways up to i'th is equal to
+        // the sum of the number of the ways to [1, i]
+        // such us, if our i is 5, to calculate the number of ways, we need to sum
+        // the ways to 1, to 2, to 3, to 4. Like: f(5) = f(4) + f(3) + f(2) + f(1)
+        
+    }
+    printf("%d", dp[n - 1]);
+    return 0;
+}

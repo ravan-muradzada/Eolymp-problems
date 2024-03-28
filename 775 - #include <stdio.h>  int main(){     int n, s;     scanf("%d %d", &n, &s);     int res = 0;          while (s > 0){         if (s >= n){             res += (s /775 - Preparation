@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main(){
+    int n, s;
+    scanf("%d %d", &n, &s);
+    int res = 0;
+    
+    while (s > 0){
+        if (s >= n){
+            res += (s / n);
+            s %= n; 
+        }else{
+            n = s;
+        }
+    }
+    printf("%d", res);
+    
+    return 0;
+}

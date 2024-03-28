@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+#include <algorithm>
+using namespace std;
+
+int main(){
+    int k, m, n, count = 0, sum = 0;
+    cin >> k >> m >> n;
+    vector<int> digets(k + 1);
+    int  need = m * n;
+    for (int i = 1; i <= k; ++i) cin >> digets[i];
+    sort(digets.begin(), digets.end());
+
+    for (int i = k; i >= 1; --i){
+        if (sum >= need) break;
+        sum += digets[i];
+        count++;
+    }
+    cout << count;
+
+    return 0;
+}

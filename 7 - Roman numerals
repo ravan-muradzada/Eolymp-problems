@@ -1,0 +1,41 @@
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+using namespace std;
+char chrs[] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+int nums[] = {1, 5, 10, 50, 100, 500, 1000};
+unordered_map<char, int> mp = {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}};
+string f(int num) {
+    vector<int> values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    vector<string> symbols = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+    string roman;
+    for (int i = 0; i < values.size() && num >= 0; i++) {
+        while (num >= values[i]) {
+            num -= values[i];
+            roman += symbols[i];
+        }
+    }
+    return roman;
+}
+
+int convert(string a){
+    int res = 0;
+    for (int i = 0; i < a.size() - 1; ++i){
+        if (mp[a[i]] >= mp[a[i + 1]]){
+            res += mp[a[i]];
+        }else res -= mp[a[i]];
+    }
+    res += mp[a.back()];
+    return res;
+}
+
+int main(){
+    string all, a = "", b = "";
+    int i;
+    cin >> all;
+    for (i = 0; all[i] != '+'; ++i) a += all[i];
+    i++;
+    for (; i < all.size(); ++i) b += all[i];
+    cout << f(convert(a) + convert(b));
+    return 0;
+}

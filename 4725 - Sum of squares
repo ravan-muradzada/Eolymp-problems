@@ -1,0 +1,13 @@
+#include <stdio.h>
+typedef long long ll;
+
+int main(){
+    ll n, res = 0;
+    scanf("%lld", &n);
+    for (ll i = 1; i <= n; ++i){
+        res += i * i;
+    }
+    printf("%lld", res);
+    
+    return 0;
+}

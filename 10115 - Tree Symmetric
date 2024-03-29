@@ -1,0 +1,15 @@
+bool isSymmetricHelper(TreeNode* leftSubtree, TreeNode* rightSubtree) {
+    if (!leftSubtree && !rightSubtree)
+        return true;
+    if (!leftSubtree || !rightSubtree)
+        return false;
+    return (leftSubtree->val == rightSubtree->val) &&
+           isSymmetricHelper(leftSubtree->left, rightSubtree->right) &&
+           isSymmetricHelper(leftSubtree->right, rightSubtree->left);
+}
+
+bool isSymmetric(TreeNode* root) {
+    if (!root)
+        return true;
+    return isSymmetricHelper(root->left, root->right);
+}

@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int main() {
+    int num, count = 0;
+    while (scanf("%d", &num), num != 0) {
+        count++;
+    }
+    printf("%d\n", count);
+    return 0;
+}

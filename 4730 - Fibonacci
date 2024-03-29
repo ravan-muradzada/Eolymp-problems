@@ -1,24 +1,14 @@
-#include <bits/stdc++.h>
-using namespace std;
-void f(size_t n){
-    size_t a = 1,b = 1;
-    vector <int> v;
-    for (int i = 0; i < n + 1; ++i){
-        v.push_back(a);
-        v.push_back(b);
-        if (v.size() > n) break;
-        a = a + b;
-        b = a + b;
-    }
-    cout << v[n];
-}
-
+#include <stdio.h>
 
 int main(){
-    size_t n;
-    cin >> n;
-    f(n);
+    int n, a = 1, b = 1;
+    scanf("%d", &n);
     
-    
+    for (int i = 0; i < n; ++i){
+        int temp = b;
+        b = a + b;
+        a = temp;
+    }
+    printf("%d", a);
     return 0;
 }

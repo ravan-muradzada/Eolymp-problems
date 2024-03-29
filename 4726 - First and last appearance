@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+void f(string &a){
+    int count = 0, st, end;
+    bool flag = false;
+    for (int i = 0; i < a.size(); ++i){
+        if (a[i] == 'f' && count == 0){
+            count++;
+            flag = true;
+            st = i;
+        }else if (flag && a[i] == 'f'){
+            end = i;
+            count++;
+        }
+    }
+    if (flag){
+        cout << st << " ";
+        if (count > 1) cout << end;
+    }
+    
+}
+
+int main(){
+    string a;
+    cin >> a;
+    f(a);
+    return 0;
+}

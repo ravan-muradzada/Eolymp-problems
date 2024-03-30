@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int sumOfDigits(int a){
+    int res = 0;
+    while (a > 0){
+        res += a % 10;
+        a /= 10;
+    }
+    return res;
+}
+
+int main(){
+    int n, count = 0;
+    scanf("%d", &n);
+    
+    while (n > 0){
+        n -= sumOfDigits(n);
+        count++;
+    }
+    printf("%d", count);
+    
+    
+    return 0;
+}

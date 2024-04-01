@@ -1,6 +1,6 @@
 #include <stdio.h>
 int maxLeftCyclicShift(int n) {
-    int maxShift = 0;
+    int maxShift = 0; 
     int num = n;
     int bitCount = 0;
     

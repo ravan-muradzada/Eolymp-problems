@@ -1,0 +1,22 @@
+#include <stdio.h>
+int main() {
+    int n, m, a, b, degree;
+    scanf("%d %d", &n, &m);
+    int map[n];
+    for (int i = 0; i < n; ++i) map[i] = 0;
+    for (int i = 0; i < m; ++i){
+        scanf("%d %d", &a, &b);
+        map[a - 1]++;
+        map[b - 1]++;
+    }
+    degree = map[0];
+    for (int i = 1; i < n; ++i){
+        if (map[i] != degree){
+            printf("NO");
+            return 0;
+        }
+    }
+    printf("YES");
+    
+    return 0;
+}

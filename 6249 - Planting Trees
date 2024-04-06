@@ -16,5 +16,7 @@ int main(){
         if (max < arr[i]) max = arr[i];
     }
     cout << ++max;
+    delete[] arr;
+    arr = nullptr;
     return 0;
 }

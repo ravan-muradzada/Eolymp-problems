@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void dfs(int node, vector<int>arr[], vector<bool>& visited){
+    cout << node << " ";
+    visited[node] = true;
+    for (int i: arr[node]){
+        if (!visited[i]) dfs(i, arr, visited);
+    }
+}
+
+int main(){
+    int n, m, a, b, v;
+    cin >> n >> m;
+    vector<int> arr[n + 1];
+    vector<bool> visited(n + 1, false);
+    for (int i = 0; i < m; ++i){
+        cin >> a >> b;
+        arr[a].push_back(b);
+        arr[b].push_back(a);
+    }
+    cin >> v;
+    dfs(v, arr, visited);
+    
+    return 0;
+}

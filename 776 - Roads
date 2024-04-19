@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+vector<bool> visited;
+vector<vector<int>> adj;
+
+void dfs(int node) {
+    visited[node] = true;
+
+    for(auto i: adj[node]) {
+        if(!visited[i]) {
+            dfs(i);
+        }
+    }
+}
+
+int main() {
+    int nodes, edges;
+    cin >> nodes >> edges;
+
+    visited.assign(nodes+1, false);
+    adj.assign(nodes+1, vector<int>());
+
+    int u, v;
+    for(int i = 0; i < edges; i++) {
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+    int components = 0;
+    for(int i = 1; i <= nodes; i++) {
+        if(!visited[i]) {
+            dfs(i);
+            components++;
+        }
+    }
+
+    cout << components - 1 << endl;
+
+    return 0;
+}

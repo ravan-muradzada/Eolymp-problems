@@ -7,3 +7,4 @@ int minDepth(TreeNode* tree){
     int rightPart = minDepth(tree->right);
     return min(leftPart, rightPart) + 1;
 }
+ 
